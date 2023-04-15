@@ -13,7 +13,7 @@ import pdfkit
 import urllib.parse
 from nltk.cluster.util import cosine_distance
 
-import networkx as nx
+# import networkx as nx
 openai.api_key = "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"
 import os
 def summarize(text):
