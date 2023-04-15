@@ -7,7 +7,7 @@ import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+# from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import openai
 import pdfkit
 import urllib.parse
@@ -173,20 +173,20 @@ def sentence_similarity(sent1, sent2, stopwords=None):
 
     return 1 - cosine_distance(vector1, vector2)
 # Function to create similarity matrix
-def build_similarity_matrix(sentences, stopwords=None):
-    if stopwords is None:
-        stopwords = []
+# def build_similarity_matrix(sentences, stopwords=None):
+#     if stopwords is None:
+#         stopwords = []
 
-    similarity_matrix = np.zeros((len(sentences), len(sentences)))
+#     similarity_matrix = np.zeros((len(sentences), len(sentences)))
 
-    for idx1 in range(len(sentences)):
-        for idx2 in range(len(sentences)):
-            if idx1 == idx2:
-                continue
+#     for idx1 in range(len(sentences)):
+#         for idx2 in range(len(sentences)):
+#             if idx1 == idx2:
+#                 continue
 
-            similarity_matrix[idx1][idx2] = sentence_similarity(sentences[idx1], sentences[idx2], stopwords)
+#             similarity_matrix[idx1][idx2] = sentence_similarity(sentences[idx1], sentences[idx2], stopwords)
 
-    return similarity_matrix
+#     return similarity_matrix
 # Function to generate summary
 def generate_summary2(text, num_sentences=50, cutoff=0.1):
     sentences = nltk.sent_tokenize(text)
