@@ -5,6 +5,7 @@ import regex
 from youtube_transcript_api import YouTubeTranscriptApi as yta
 import re
 import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 # from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
