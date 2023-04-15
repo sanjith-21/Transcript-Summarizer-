@@ -1,10 +1,7 @@
-
-
-
-
 import heapq
 from flask import Flask, make_response, redirect, render_template, request, send_from_directory
 import numpy as np
+import regex
 from youtube_transcript_api import YouTubeTranscriptApi as yta
 import re
 import nltk
@@ -83,7 +80,7 @@ def generate_summary_final(transcript):
 
     # Join the summaries into a final summary with a total word count limit of 300
     final_summary = " ".join(summaries)
-    sentences = re.findall(r"[^.!?]+[.!?]", final_summary)
+    sentences = regex.findall(r"[^.!?]+[.!?]", final_summary)
     sentence_scores = {}
     for sentence in sentences:
         sentence_scores[sentence] = sentence_score(sentence, transcript)
@@ -103,7 +100,7 @@ def sentence_score(sentence, transcript):
 
 def generate_summary(transcript):
      # Split the transcript into sentences using regular expressions
-    sentences = re.findall(r"[^.!?]+[.!?]", transcript)
+    sentences = regex.findall(r"[^.!?]+[.!?]", transcript)
     
     # Initialize variables
     max_chunk_size = 4096
@@ -228,7 +225,7 @@ def generate_summary2(text, num_sentences=50, cutoff=0.1):
     return summary
 
 def get_transcript(video_link):
-    video_id = re.search(r'v=([^&]*)', video_link).group(1)
+    video_id = regex.search(r'v=([^&]*)', video_link).group(1)
     transcript = yta.get_transcript(video_id)
     lines = ""
     temp = ""
